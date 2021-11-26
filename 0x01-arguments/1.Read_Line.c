@@ -3,7 +3,7 @@
 /**
  * main- Program that prints \"$ \", wait for the user to enter a command,
  * prints it on the next line.
- * Return: Always 0.
+ * Return: Always 0
  */
 int main(void)
 {

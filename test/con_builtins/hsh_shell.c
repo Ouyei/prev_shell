@@ -27,14 +27,14 @@ int main(int ac, char **av, char **env)
 				free(line);
 				continue;
 			} /**user inputed "exit"*/
-			if ((!_strcmp(commands[0], "exit")) && commands[1] == NULL)
-				_exit_command(commands, line, status);
 			if (!_strcmp(commands[0], "env"))/**checks if user wrote env"*/
 				_getenv(env);
 			else
 			{
 				interactive = _values_path(&commands[0], env);/** tokenizes PATH*/
 				status = _fork_fun(commands, av, env, line, pathValue, interactive);
+					if (status == 200)
+						return (0);
 				if (interactive == 0)
 					free(commands[0]);
 			}

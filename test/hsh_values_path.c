@@ -5,6 +5,7 @@
  * @env: Enviroment.
  * Return: Pointer to strings.
  */
+
 int _values_path(char **directories, char **env)
 {
 	char *token = NULL, *path_rela = NULL, *path_absol = NULL;
@@ -18,10 +19,10 @@ int _values_path(char **directories, char **env)
 		return (-1);
 	/** here we tokenize the path*/
 	token = _strtok(path_rela, ":");
-	command = _strlen(*directories);
+	command = strlen(*directories);
 	while (token)
 	{
-		value_path = _strlen(token);
+		value_path = strlen(token);
 		path_absol = malloc(sizeof(char) * (value_path + command + 2));
 		if (!path_absol)
 		{
@@ -29,9 +30,9 @@ int _values_path(char **directories, char **env)
 			return (-1);
 		}
 		path_absol = _strcpy(path_absol, token);
-		_strcat(path_absol, "/");
-		_strcat(path_absol, *directories);
-		/* the [0] is "PATH"*/
+		strcat(path_absol, "/");
+		strcat(path_absol, *directories);
+		/** the [0] is "PATH"*/
 		if (stat(path_absol, &stat_lineptr) == 0)
 		{
 			*directories = path_absol;

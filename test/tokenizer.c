@@ -1,11 +1,11 @@
 #include "shell.h"
 /**
- * _get_token - get token of string
- * @lineptr: comman user
- * Return: To a pointer
+ * tokenize - tokenizes a stirng
+ * @lineptr: what the user inputed
+ * Return: a ptr to arr of ptrs
  */
 
-char **_get_token(char *lineptr)
+char **tokenize(char *lineptr)
 {
 	char **user_command = NULL;
 	char *token = NULL;

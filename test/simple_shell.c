@@ -16,23 +16,23 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-		line = _getline_command();
+		line = _getline_command();/** reads user input*/
 		if (line)
 		{
 			pathValue++;
-			args = _get_token(line);
+			args = _get_token(line);/** tokenizes user input*/
 			if (!args)
 			{
 				free(line);
 				continue;
 			}
-			if ((!_strcmp(args[0], "exit")) && args[1] == NULL)
+			if ((!_strcmp(args[0], "exit")) && args[1] == NULL)/** user wrote "exit"*/
 				_exit_command(args, line, stat);
-			if (!_strcmp(args[0], "env"))
+			if (!_strcmp(args[0], "env"))/**checks if user wrote env"*/
 				_getenv(env);
 			else
 			{
-				n = _values_path(&args[0], env);
+				n = _values_path(&args[0], env);/** tokenizes PATH*/
 				stat = _fork_fun(args, av, env, line, pathValue, n);
 				if (n == 0)
 					free(args[0]);

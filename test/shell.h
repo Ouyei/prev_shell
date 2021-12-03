@@ -1,6 +1,5 @@
 #ifndef SHELL_H
 #define SHELL_H
-#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +23,7 @@ char *_get_path(char **env);
 int _values_path(char **arg, char **env);
 char *_getline_command(void);
 void _getenv(char **env);
-char **_get_token(char *lineptr);
+char **tokenize(char *lineptr);
 void _exit_command(char **args, char *lineptr, int _exit);
 int _fork_fun(char **arg, char **av, char **env,
 char *lineptr, int np, int c);

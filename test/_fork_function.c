@@ -17,7 +17,6 @@ int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 	char *format = "%s: %d: %s: not found\n";
 
 	child = fork();
-
 	if (child == 0)
 	{
 		if (execve(arg[0], arg, env) == -1)
@@ -33,7 +32,6 @@ int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 	else
 	{
 		wait(&status);
-
 		return (status);
 	}
 	return (0);

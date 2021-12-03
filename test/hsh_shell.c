@@ -21,13 +21,13 @@ int main(int ac, char **av, char **env)
 		if (line)
 		{
 			pathValue++;
-			directories = _get_token(line);/** tokenizes or parse user input*/
+			directories = tokenize(line);/** tokenizes or parse user input*/
 			if (!directories)
 			{
 				free(line);
 				continue;
-			}
-			if ((!_strcmp(directories[0], "exit")) && directories[1] == NULL)/** user wrote "exit"*/
+			} /**user inputed "exit"*/
+			if ((!_strcmp(directories[0], "exit")) && directories[1] == NULL)
 				_exit_command(directories, line, status);
 			if (!_strcmp(directories[0], "env"))/**checks if user wrote env"*/
 				_getenv(env);

@@ -5,20 +5,20 @@
  * @env: Enviroment.
  * Return: Pointer to strings.
  */
-int _values_path(char **arg, char **env)
+int _values_path(char **directories, char **env)
 {
 	char *token = NULL, *path_rela = NULL, *path_absol = NULL;
 	size_t value_path, command;
 	struct stat stat_lineptr;
 
-	if (stat(*arg, &stat_lineptr) == 0)
+	if (stat(*directories, &stat_lineptr) == 0)
 		return (-1);
 	path_rela = _get_path(env);
 	if (!path_rela)
 		return (-1);
 	/** here we tokenize the path*/
 	token = _strtok(path_rela, ":");
-	command = _strlen(*arg);
+	command = _strlen(*directories);
 	while (token)
 	{
 		value_path = _strlen(token);
@@ -30,11 +30,11 @@ int _values_path(char **arg, char **env)
 		}
 		path_absol = _strcpy(path_absol, token);
 		_strcat(path_absol, "/");
-		_strcat(path_absol, *arg);
-
+		_strcat(path_absol, *directories);
+		/* the [0] is "PATH"*/
 		if (stat(path_absol, &stat_lineptr) == 0)
 		{
-			*arg = path_absol;
+			*directories = path_absol;
 			free(path_rela);
 			return (0);
 		}

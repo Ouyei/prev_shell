@@ -9,8 +9,9 @@
 int main(int ac, char **av, char **env)
 {
 	char *line = NULL;
-	char **user_command = NULL;
-	int pathValue = 0, _exit = 0, n = 0;
+	char **args = NULL;
+	int pathValue = 0;
+	int stat = 0, n = 0;
 	(void)ac;
 
 	while (1)
@@ -19,32 +20,32 @@ int main(int ac, char **av, char **env)
 		if (line)
 		{
 			pathValue++;
-			user_command = _get_token(line);
-			if (!user_command)
+			args = _get_token(line);
+			if (!args)
 			{
 				free(line);
 				continue;
 			}
-			if ((!_strcmp(user_command[0], "exit")) && user_command[1] == NULL)
-				_exit_command(user_command, line, _exit);
-			if (!_strcmp(user_command[0], "env"))
+			if ((!_strcmp(args[0], "exit")) && args[1] == NULL)
+				_exit_command(args, line, stat);
+			if (!_strcmp(args[0], "env"))
 				_getenv(env);
 			else
 			{
-				n = _values_path(&user_command[0], env);
-				_exit = _fork_fun(user_command, av, env, line, pathValue, n);
+				n = _values_path(&args[0], env);
+				stat = _fork_fun(args, av, env, line, pathValue, n);
 				if (n == 0)
-					free(user_command[0]);
+					free(args[0]);
 			}
-			free(user_command);
+			free(args);
 		}
 		else
 		{
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
-			exit(_exit);
+			exit(stat);
 		}
 		free(line);
 	}
-	return (_exit);
+	return (stat);
 }

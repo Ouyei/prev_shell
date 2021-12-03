@@ -16,6 +16,7 @@ int _values_path(char **arg, char **env)
 	path_rela = _get_path(env);
 	if (!path_rela)
 		return (-1);
+	/** here we tokenize the path*/
 	token = _strtok(path_rela, ":");
 	command = _strlen(*arg);
 	while (token)

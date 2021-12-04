@@ -49,31 +49,20 @@ return (val);
 
 }
 
-
-
-
-
-
-
-
-
-
 /**
- * _strlen - copies the string pointed to by src into dest
- * @s: A pointer
- * Return: char pointer to dest
+ * _strlen - gets the size of a string
+ * @s: the string to tokenize
+ * Return: the length of the string
  */
 
 int _strlen(char *s)
 {
-	int ch = 0;
+	int i;
 
-	while (*(s + ch) != '\0')
-	{
-		ch++;
-	}
+	for (i = 0; s[i] != 0; i++)
+		;
 
-	return (ch);
+	return (i);
 }
 
 /**

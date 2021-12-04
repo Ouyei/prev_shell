@@ -19,10 +19,10 @@ int _values_path(char **directories, char **env)
 		return (-1);
 	/** here we tokenize the path*/
 	token = strtok(path_rela, ":");
-	command = strlen(*directories);
+	command = _strlen(*directories);
 	while (token)
 	{
-		value_path = strlen(token);
+		value_path = _strlen(token);
 		path_absol = malloc(sizeof(char) * (value_path + command + 2));
 		if (!path_absol)
 		{

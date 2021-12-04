@@ -26,24 +26,52 @@ char *_strcat(char *dest, char *src)
 	return (dest);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
- * _strcmp - Compare the values of a string.
- * @s1: Character
- * @s2: Character
- * Return: 0
+ * _strcmp - Compares two strings
+ *
+ * @s1: a string
+ * @s2: Another string
+ *
+ * Return: multiple returns
+ *
  */
 
 int _strcmp(char *s1, char *s2)
 {
-	int a;
+	int i = 0;
+	int val;
 
-	for (a = 0; s1[a] != '\0' && s2[a] != '\0'; a++)
-	{
-		if (s1[a] != s2[a])
-			return ((int)s1[a] - s2[a]);
-	}
-	return (0);
+	while (s1[i] != 0 && s2[i] != 0 && s1[i] == s2[i])
+		i++;
+val = s1[i] - s2[i];
+return (val);
+
 }
+
+
+
+
+
+
+
+
+
 
 /**
  * _strlen - copies the string pointed to by src into dest

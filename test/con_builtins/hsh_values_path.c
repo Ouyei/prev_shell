@@ -18,7 +18,7 @@ int _values_path(char **directories, char **env)
 	if (!path_rela)
 		return (-1);
 	/** here we tokenize the path*/
-	token = _strtok(path_rela, ":");
+	token = strtok(path_rela, ":");
 	command = strlen(*directories);
 	while (token)
 	{
@@ -40,7 +40,7 @@ int _values_path(char **directories, char **env)
 			return (0);
 		}
 		free(path_absol);
-		token = _strtok(NULL, ":");
+		token = strtok(NULL, ":");
 	}
 	free(path_rela);
 	return (-1);

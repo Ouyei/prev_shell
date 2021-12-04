@@ -26,11 +26,11 @@ char **tokenize(char *lineptr)
 	if (user_command == NULL)
 		return (NULL);
 
-	token = _strtok(lineptr, " \n\t\r");
+	token = strtok(lineptr, " \n\t\r");
 	for (i = 0; token != NULL; i++)
 	{
 		user_command[i] = token;
-		token = _strtok(NULL, " \n\t\r");
+		token = strtok(NULL, " \n\t\r");
 	}
 	user_command[i] = NULL;
 	return (user_command);

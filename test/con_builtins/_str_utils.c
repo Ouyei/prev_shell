@@ -51,7 +51,7 @@ return (val);
 
 /**
  * _strlen - gets the size of a string
- * @s: the string to tokenize
+ * @s: the string to measure
  * Return: the length of the string
  */
 
@@ -101,12 +101,27 @@ char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
 
-	while (*(src + i) != '\0')
+	for (i = 0; src[i] != '\0'; i++)
 	{
-		*(dest + i) = *(src + i);
-		++i;
+		dest[i] = src[i];
 	}
-	*(dest + i) = *(src + i);
-
+	dest[i + 1] = 0;
 	return (dest);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

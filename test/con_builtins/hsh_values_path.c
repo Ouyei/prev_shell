@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * _values_path - Separate the path in new strings.
- * @arg: Command input of user.
+ * @directories: Command input of user.
  * @env: Enviroment.
  * Return: Pointer to strings.
  */
@@ -30,8 +30,8 @@ int _values_path(char **directories, char **env)
 			return (-1);
 		}
 		path_absol = _strcpy(path_absol, token);
-		strcat(path_absol, "/");
-		strcat(path_absol, *directories);
+		_strcat(path_absol, "/");
+		_strcat(path_absol, *directories);
 		/** the [0] is "PATH"*/
 		if (stat(path_absol, &stat_lineptr) == 0)
 		{

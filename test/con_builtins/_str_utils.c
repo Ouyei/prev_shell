@@ -1,45 +1,30 @@
 #include "shell.h"
+
 /**
- *_strcat - Copy string to another string.
- *@dest: Character
- *@src: Character
- *Return: Destination.
+ * _strcat -  Concatenates two strings
  *
+ * @dest: Destination string
+ *
+ * @src: Origin string
+ * Return: Always 0
  */
 
 char *_strcat(char *dest, char *src)
 {
-	int d = 0;
-	int s = 0;
+	int i, j = 0;
 
-	while (dest[d] != '\0')
+	for (i = 0; dest[i] != '\0'; i++)
 	{
-		d++;
 	}
-	while (src[s] != '\0')
+	for (j = 0; src[j] != '\0'; j++)
 	{
-		dest[d] = src[s];
-		d++;
-		s++;
+		dest[i] = src[j];
+		i++;
+
 	}
-	dest[d] = '\0';
-	return (dest);
+	dest[i] = 0;
+return (dest);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**

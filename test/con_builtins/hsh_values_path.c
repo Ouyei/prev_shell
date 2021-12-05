@@ -27,7 +27,7 @@ int _values_path(char **arg, char **env)
 			free(path_rela);
 			return (-1);
 		}
-		path_absol = _strcpy(path_absol, token);
+		path_absol = strcpy(path_absol, token);
 		_strcat(path_absol, "/");
 		_strcat(path_absol, *arg);
 

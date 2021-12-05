@@ -1,14 +1,14 @@
 #include "shell.h"
 /**
- * _get_path - get variable PATH.
- * @env: enviromente local
+ * _get_path - Get variable PATH.
+ * @env: Local enviroment.
  * Return: value of PATH.
  */
 
 char *_get_path(char **env)
 {
-	size_t index = 0, var = 0, count = 5;
 	char *path = NULL;
+	size_t var, index = 0, count = 5;
 
 	for (index = 0; _strncmp(env[index], "PATH=", 5); index++)
 		;

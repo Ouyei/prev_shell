@@ -72,6 +72,7 @@ int lsh_exit(char **args)
 {
 	(void)args;
 	printf("should exit\n");
+	free(args);
 	return (200);
 }
 

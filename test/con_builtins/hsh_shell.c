@@ -8,8 +8,7 @@
  */
 int main(int ac, char **av, char **env)
 {
-	int pathValue = 0;
-	int status = 0, interactive = 0;
+	int pathValue = 0, status = 0, interactive = 0;
 	char *line = NULL; /** a pointer to the input*/
 	/* pointer to array of string with the directories. i.e. "usr/bin" */
 	char **commands = NULL; /**these are the tokenized commands*/
@@ -28,13 +27,19 @@ int main(int ac, char **av, char **env)
 				continue;
 			} /**user inputed "exit"*/
 			if (!_strcmp(commands[0], "env"))/**checks if user wrote env"*/
+			{
+				free(line);
 				_getenv(env);
+			}
 			else
 			{
 				interactive = _values_path(&commands[0], env);/** tokenizes PATH*/
 				status = _fork_fun(commands, av, env, line, pathValue, interactive);
 					if (status == 200)
+					{
+						free(line);
 						return (0);
+					}
 				if (interactive == 0)
 					free(commands[0]);
 			}
@@ -43,7 +48,7 @@ int main(int ac, char **av, char **env)
 		else
 		{
 			if (isatty(STDIN_FILENO))
-				write(STDOUT_FILENO, "\n", 1);/*ACA EJECUTA????!!!!!*/
+				write(STDOUT_FILENO, "\n", 1);/** Writes to standard output*/
 			exit(status);
 		}
 		free(line);

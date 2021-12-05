@@ -28,7 +28,6 @@ int main(int ac, char **av, char **env)
 			} /**user inputed "exit"*/
 			if (!_strcmp(commands[0], "env"))/**checks if user wrote env"*/
 			{
-				free(line);
 				_getenv(env);
 			}
 			else

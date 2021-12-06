@@ -1,7 +1,4 @@
 #include "shell.h"
-/**
-* on Declarations for builtin shell commands:
-*/
 int lsh_cd(char **args);
 int lsh_help(char **args);
 int lsh_exit(char **args);
@@ -13,6 +10,11 @@ char *builtin_str[] = {"cd", "help", "exit"};
 
 int (*builtin_func[]) (char **) = {&lsh_cd, &lsh_help, &lsh_exit};
 
+/**
+ * lsh_num_builtins - size
+ * Return: size
+ */
+
 int lsh_num_builtins(void)
 {
 	return (sizeof(builtin_str) / sizeof(char *));
@@ -23,9 +25,9 @@ int lsh_num_builtins(void)
 */
 
 /**
-   @brief Bultin command: change directory.
-   @param args List of args.  args[0] is "cd".  args[1] is the directory.
-   @return Always returns 1, to continue executing.
+ * lsh_cd - builtin to change dirs
+ * @args: List of args.  args[0] is "cd".  args[1] is the directory.
+ * Return: 1 on success
  */
 int lsh_cd(char **args)
 {
@@ -44,29 +46,29 @@ int lsh_cd(char **args)
 }
 
 /**
-   @brief Builtin command: print help.
-   @param args List of args.  Not examined.
-   @return Always returns 1, to continue executing.
+ * lsh_help - prints the help for the shell
+ * @args: List of args.  Not examined.
+ * Return: Always returns 1, to continue executing.
  */
 int lsh_help(char **args)
 {
-  int i;
-  printf("Oscar Bedat and Andres Henderson\n");
-  printf("If you need help, call 1-800-help\n");
-  (void)args;
-  for (i = 0; i < lsh_num_builtins(); i++)
-  {
-	  printf("  %s\n", builtin_str[i]);
-  }
+	int i;
 
-  printf("Use the man command for information on other programs.\n");
-  return (1);
+	printf("Oscar Bedat and Andres Henderson\n");
+	printf("If you need help, call 1-800-help\n");
+	(void)args;
+	for (i = 0; i < lsh_num_builtins(); i++)
+	{
+		printf("  %s\n", builtin_str[i]);
+	}
+
+	return (1);
 }
 
 /**
-   @brief Builtin command: exit.
-   @param args List of args.  Not examined.
-   @return Always returns 0, to terminate execution.
+ * lsh_exit - builtin to exit the shell
+ * @args: List of args.  Not examined.
+ * Return: Always returns 0, to terminate execution.
  */
 int lsh_exit(char **args)
 {
@@ -78,7 +80,8 @@ int lsh_exit(char **args)
 
 
 
-/** ion that create a fork.
+/**
+ *_fork_fun - foo that create a fork.
  *@arg: Command and values path.
  *@av: Has the name of our program.
  *@env: Environment
@@ -100,7 +103,7 @@ int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 	for (i = 0; i < lsh_num_builtins(); i++)
 	{
 		if (_strcmp(arg[0], builtin_str[i]) == 0)
-				return (builtin_func[i](arg));
+			return (builtin_func[i](arg));
 	}
 	child = fork();
 	if (child == 0)

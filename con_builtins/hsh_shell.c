@@ -9,12 +9,9 @@
 int main(int ac, char **av, char **env)
 {
 	int pathValue = 0, status = 0, interactive = 0;
-	char *line = NULL; /** a pointer to the input*/
-	/* pointer to array of string with the directories. i.e. "usr/bin" */
-	char **commands = NULL; /**these are the tokenized commands*/
+	char *line = NULL, /**ptr to inpt*/ **commands = NULL; /**tokenized commands*/
 	(void)ac;
-	/* loop until exit */
-	while (1)
+	while (1)/* loop until exit */
 	{
 		line = _getline_command();/** reads user input*/
 		if (line)
@@ -27,9 +24,7 @@ int main(int ac, char **av, char **env)
 				continue;
 			} /**user inputed "exit"*/
 			if (!_strcmp(commands[0], "env"))/**checks if user wrote env"*/
-			{
 				_getenv(env);
-			}
 			else
 			{
 				interactive = _values_path(&commands[0], env);/** tokenizes PATH*/

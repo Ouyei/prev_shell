@@ -8,7 +8,7 @@
  */
 int main(int ac, char **av, char **env)
 {
-	int pathValue = 0, status = 0, interactive = 0;
+	int pathValue = 0, status = 0, is_path = 0;
 	char *line = NULL, /**ptr to inpt*/ **commands = NULL; /**tokenized commands*/
 	(void)ac;
 	while (1)/* loop until exit */
@@ -27,14 +27,14 @@ int main(int ac, char **av, char **env)
 				_getenv(env);
 			else
 			{
-				interactive = _values_path(&commands[0], env);/** tokenizes PATH*/
-				status = _fork_fun(commands, av, env, line, pathValue, interactive);
+				is_path = _values_path(&commands[0], env);/** tokenizes PATH*/
+				status = _fork_fun(commands, av, env, line, pathValue, is_path);
 					if (status == 200)
 					{
 						free(line);
 						return (0);
 					}
-				if (interactive == 0)
+				if (is_path == 0)
 					free(commands[0]);
 			}
 			free(commands); /*free up memory*/
